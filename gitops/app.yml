@@ -9,5 +9,5 @@ spec:
     server: https://kubernetes.default.svc
   project: infra
   source:
-    path: ./gitops/apps
+    path: ./apps
     repoURL: https://github.com/mmd-app/infra.git
