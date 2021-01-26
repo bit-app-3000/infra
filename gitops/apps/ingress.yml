@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 
 metadata:
@@ -10,11 +10,10 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: cd-maap
 
 spec:
-  defaultBackend:
-    service:
-      name: argocd-server
-      port:
-        number: 80
+  backend:
+    serviceName: argocd-server
+    servicePort: 80
+
 
   rules:
     - host: cd.fobos.app
@@ -22,9 +21,5 @@ spec:
         paths:
           - path: /*
             backend:
-              service:
-                name: argocd-server
-                port:
-                  number: 80
-
-
+              serviceName: argocd-server
+              servicePort: 80
