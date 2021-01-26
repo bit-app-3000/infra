@@ -15,6 +15,7 @@ spec:
       name: argocd-server
       port:
         number: 80
+
   rules:
     - host: cd.fobos.app
       http:
