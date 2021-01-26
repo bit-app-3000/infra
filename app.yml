@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+project: infra
+
+source:
+  repoURL: 'https://github.com/mmd-app/infra.git'
+  path: gitops
+  targetRevision: HEAD
+  directory:
+    recurse: true
+    jsonnet: {}
+
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: infra
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
